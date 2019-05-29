@@ -1,0 +1,14 @@
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Discount\HW2_Discount\bin\Debug\HW2_Discount.exe.config
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Discount\HW2_Discount\bin\Debug\HW2_Discount.exe
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Discount\HW2_Discount\bin\Debug\HW2_Discount.pdb
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Discount\HW2_Discount\obj\Debug\HW2_Discount.csprojAssemblyReference.cache
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Discount\HW2_Discount\obj\Debug\HW2_Discount.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Discount\HW2_Discount\obj\Debug\HW2_Discount.exe
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Discount\HW2_Discount\obj\Debug\HW2_Discount.pdb
+C:\Users\User\Desktop\ITEA\HW2\HW2_Discount (switch)\HW2_Discount\bin\Debug\HW2_Discount.exe.config
+C:\Users\User\Desktop\ITEA\HW2\HW2_Discount (switch)\HW2_Discount\bin\Debug\HW2_Discount.exe
+C:\Users\User\Desktop\ITEA\HW2\HW2_Discount (switch)\HW2_Discount\bin\Debug\HW2_Discount.pdb
+C:\Users\User\Desktop\ITEA\HW2\HW2_Discount (switch)\HW2_Discount\obj\Debug\HW2_Discount.csprojAssemblyReference.cache
+C:\Users\User\Desktop\ITEA\HW2\HW2_Discount (switch)\HW2_Discount\obj\Debug\HW2_Discount.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ITEA\HW2\HW2_Discount (switch)\HW2_Discount\obj\Debug\HW2_Discount.exe
+C:\Users\User\Desktop\ITEA\HW2\HW2_Discount (switch)\HW2_Discount\obj\Debug\HW2_Discount.pdb
