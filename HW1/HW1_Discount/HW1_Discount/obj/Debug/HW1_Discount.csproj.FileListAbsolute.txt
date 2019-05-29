@@ -1,0 +1,7 @@
+C:\Users\User\Desktop\ITEA\HM1_Discount\HW1_Discount\HW1_Discount\bin\Debug\HW1_Discount.exe.config
+C:\Users\User\Desktop\ITEA\HM1_Discount\HW1_Discount\HW1_Discount\bin\Debug\HW1_Discount.exe
+C:\Users\User\Desktop\ITEA\HM1_Discount\HW1_Discount\HW1_Discount\bin\Debug\HW1_Discount.pdb
+C:\Users\User\Desktop\ITEA\HM1_Discount\HW1_Discount\HW1_Discount\obj\Debug\HW1_Discount.csprojAssemblyReference.cache
+C:\Users\User\Desktop\ITEA\HM1_Discount\HW1_Discount\HW1_Discount\obj\Debug\HW1_Discount.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ITEA\HM1_Discount\HW1_Discount\HW1_Discount\obj\Debug\HW1_Discount.exe
+C:\Users\User\Desktop\ITEA\HM1_Discount\HW1_Discount\HW1_Discount\obj\Debug\HW1_Discount.pdb
