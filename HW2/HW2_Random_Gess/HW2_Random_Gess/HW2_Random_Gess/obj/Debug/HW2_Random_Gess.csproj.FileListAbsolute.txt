@@ -1,0 +1,14 @@
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\bin\Debug\HW2_Random_Gess.exe.config
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\bin\Debug\HW2_Random_Gess.exe
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\bin\Debug\HW2_Random_Gess.pdb
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\obj\Debug\HW2_Random_Gess.csprojAssemblyReference.cache
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\obj\Debug\HW2_Random_Gess.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\obj\Debug\HW2_Random_Gess.exe
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\obj\Debug\HW2_Random_Gess.pdb
+C:\Users\User\Desktop\ITEA\HW2\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\bin\Debug\HW2_Random_Gess.exe.config
+C:\Users\User\Desktop\ITEA\HW2\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\bin\Debug\HW2_Random_Gess.exe
+C:\Users\User\Desktop\ITEA\HW2\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\bin\Debug\HW2_Random_Gess.pdb
+C:\Users\User\Desktop\ITEA\HW2\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\obj\Debug\HW2_Random_Gess.csprojAssemblyReference.cache
+C:\Users\User\Desktop\ITEA\HW2\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\obj\Debug\HW2_Random_Gess.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ITEA\HW2\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\obj\Debug\HW2_Random_Gess.exe
+C:\Users\User\Desktop\ITEA\HW2\HW2_Random_Gess\HW2_Random_Gess\HW2_Random_Gess\obj\Debug\HW2_Random_Gess.pdb

@@ -1,0 +1,14 @@
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\bin\Debug\HW2_Number_Analys.exe.config
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\bin\Debug\HW2_Number_Analys.exe
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\bin\Debug\HW2_Number_Analys.pdb
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\obj\Debug\HW2_Number_Analys.csprojAssemblyReference.cache
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\obj\Debug\HW2_Number_Analys.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\obj\Debug\HW2_Number_Analys.exe
+C:\Users\User\Desktop\ITEA\HW2_Discount (switch)\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\obj\Debug\HW2_Number_Analys.pdb
+C:\Users\User\Desktop\ITEA\HW2\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\bin\Debug\HW2_Number_Analys.exe.config
+C:\Users\User\Desktop\ITEA\HW2\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\bin\Debug\HW2_Number_Analys.exe
+C:\Users\User\Desktop\ITEA\HW2\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\bin\Debug\HW2_Number_Analys.pdb
+C:\Users\User\Desktop\ITEA\HW2\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\obj\Debug\HW2_Number_Analys.csprojAssemblyReference.cache
+C:\Users\User\Desktop\ITEA\HW2\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\obj\Debug\HW2_Number_Analys.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ITEA\HW2\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\obj\Debug\HW2_Number_Analys.exe
+C:\Users\User\Desktop\ITEA\HW2\HW2_Number_Analys\HW2_Number_Analys\HW2_Number_Analys\obj\Debug\HW2_Number_Analys.pdb
