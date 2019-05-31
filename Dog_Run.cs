@@ -26,14 +26,17 @@ namespace Dog_Run
             int rnd1 = rnd.Next(1, dog.Length-1);
             int rnd2 = rnd.Next(1, dog.Length-1);
 
-            if (dog[rnd1] != '@' && dog[rnd1] != '+')
+            while(dog[rnd1] != '_')
             {
-                dog[rnd1] = '*';                
+                rnd1 = rnd.Next(dog.Length - 1);
             }
-            if (dog[rnd2] != '@' && dog[rnd2] != '*')
+            dog[rnd1] = '*';
+
+            while (dog[rnd2] != '_')
             {
-                dog[rnd2] = '+';
+                rnd2 = rnd.Next(dog.Length - 1);
             }
+            dog[rnd2] = '+';
             
             //вывод начального массива
             for (i = 0; i < dog.Length; i++)
