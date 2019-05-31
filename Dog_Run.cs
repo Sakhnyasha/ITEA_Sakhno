@@ -23,8 +23,8 @@ namespace Dog_Run
 
            //выбор рандомных мест для бомбы и аптечки
             Random rnd = new Random();
-            int rnd1 = rnd.Next(1, dog.Length-1);
-            int rnd2 = rnd.Next(1, dog.Length-1);
+            int rnd1 = rnd.Next(dog.Length-1);
+            int rnd2 = rnd.Next(dog.Length-1);
 
             while(dog[rnd1] != '_')
             {
