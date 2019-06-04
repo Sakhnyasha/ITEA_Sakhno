@@ -15,7 +15,26 @@ namespace Array_Array
             //задаем размер
             Console.WriteLine("Enter size (odd number):");
             
-            int size = Int32.Parse(Console.ReadLine());
+            //проверка на ввод только цифр
+            //если ввести только ENTER будет ошибка: неверный формат
+            bool inputComplete = false;
+            StringBuilder sb = new StringBuilder();
+            while (!inputComplete)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                if (char.IsDigit(key.KeyChar))
+                {
+                    sb.Append(key.KeyChar);
+                    Console.Write(key.KeyChar.ToString());
+                }
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    inputComplete = true;
+                }
+            }
+
+            int size = Int32.Parse(sb.ToString());
 
             //задаем массив массивов
             char[][] arr = new char[size][];
