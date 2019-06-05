@@ -85,14 +85,13 @@ namespace Dog_Run_10_on_10
                 ConsoleKeyInfo key = Console.ReadKey(true);
 
                 Boolean keepLoop = true; //чтобы наконец-то вышло из цикла!
-
-                xp = xp - 5;
+                
                 for (i = 0; i < rows && keepLoop; i++)
                 {
                     for (j = 0; j < columns && keepLoop; j++)
-                    {
+                    {                        
                         if (dog[i, j] == '@')
-                        {
+                        {                           
                             //движение вправо на Д
                             //уменьшение здоровья
                             if (key.Key == ConsoleKey.D)
@@ -100,6 +99,7 @@ namespace Dog_Run_10_on_10
                                 //если не конец строки
                                 if (j != columns - 1)
                                 {
+                                    xp = xp - 5;
                                     if (dog[i, j + 1] == '*')
                                         xp = xp - 40;
                                     if (dog[i, j + 1] == '+')
@@ -127,6 +127,7 @@ namespace Dog_Run_10_on_10
                                 //если не начало строки
                                 if (j != 0)
                                 {
+                                    xp = xp - 5;
                                     if (dog[i, j - 1] == '*')
                                         xp = xp - 40;
                                     if (dog[i, j - 1] == '+')
@@ -154,6 +155,7 @@ namespace Dog_Run_10_on_10
                                 //если не начало столбца
                                 if (i != 0)
                                 {
+                                    xp = xp - 5;
                                     if (dog[i - 1, j] == '*')
                                         xp = xp - 40;
                                     if (dog[i - 1, j] == '+')
@@ -181,6 +183,7 @@ namespace Dog_Run_10_on_10
                                 //если не конец столбца
                                 if (i != rows - 1)
                                 {
+                                    xp = xp - 5;
                                     if (dog[i + 1, j] == '*')
                                         xp = xp - 40;
                                     if (dog[i + 1, j] == '+')
