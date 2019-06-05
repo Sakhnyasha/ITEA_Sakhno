@@ -99,6 +99,7 @@ namespace Dog_Run_10_on_10
                                 //если не конец строки
                                 if (j != columns - 1)
                                 {
+                                    xp = xp - 5;
                                     if (dog[i, j + 1] == '*')
                                         xp = xp - 40;
                                     if (dog[i, j + 1] == '+')
@@ -109,14 +110,14 @@ namespace Dog_Run_10_on_10
                                     }
                                     dog[i, j] = '_';
                                     dog[i, j + 1] = '@';
-                                    xp = xp - 5;
                                 }
                                 //если конец строки перекинуть на начало
                                 else
                                 {
+                                    xp = xp - 5;
                                     dog[i, 0] = '@';
                                     dog[i, j] = '_';
-                                    xp = xp - 5;
+                                    
                                 }
                                 keepLoop = false;
                             }
@@ -128,6 +129,7 @@ namespace Dog_Run_10_on_10
                                 //если не начало строки
                                 if (j != 0)
                                 {
+                                    xp = xp - 5;
                                     if (dog[i, j - 1] == '*')
                                         xp = xp - 40;
                                     if (dog[i, j - 1] == '+')
@@ -137,15 +139,14 @@ namespace Dog_Run_10_on_10
                                             xp = 100;
                                     }
                                     dog[i, j] = '_';
-                                    dog[i, j - 1] = '@';
-                                    xp = xp - 5;
+                                    dog[i, j - 1] = '@';                                    
                                 }
                                 //если начало строки перекинуть на конец
                                 else
                                 {
-                                    dog[i, columns - 1] = '@';
-                                    dog[i, j] = '_';
                                     xp = xp - 5;
+                                    dog[i, columns - 1] = '@';
+                                    dog[i, j] = '_';                                    
                                 }
                                 keepLoop = false;
                             }
@@ -157,6 +158,7 @@ namespace Dog_Run_10_on_10
                                 //если не начало столбца
                                 if (i != 0)
                                 {
+                                    xp = xp - 5;
                                     if (dog[i - 1, j] == '*')
                                         xp = xp - 40;
                                     if (dog[i - 1, j] == '+')
@@ -166,15 +168,14 @@ namespace Dog_Run_10_on_10
                                             xp = 100;
                                     }
                                     dog[i, j] = '_';
-                                    dog[i - 1, j] = '@';
-                                    xp = xp - 5;
+                                    dog[i - 1, j] = '@';                                    
                                 }
                                 //если начало столбца перекинуть на конец
                                 else
                                 {
-                                    dog[rows - 1, j] = '@';
-                                    dog[i, j] = '_';
                                     xp = xp - 5;
+                                    dog[rows - 1, j] = '@';
+                                    dog[i, j] = '_';                                    
                                 }
                                 keepLoop = false;
                             }
@@ -182,11 +183,11 @@ namespace Dog_Run_10_on_10
                             //движение вниз на S
                             //уменьшение здоровья
                             else if (key.Key == ConsoleKey.S)
-                            {
-                                
+                            {                                
                                 //если не конец столбца
                                 if (i != rows - 1)
-                                {                                    
+                                {
+                                    xp = xp - 5;
                                     if (dog[i + 1, j] == '*')
                                         xp = xp - 40;
                                     if (dog[i + 1, j] == '+')
@@ -196,15 +197,14 @@ namespace Dog_Run_10_on_10
                                             xp = 100;
                                     }
                                     dog[i, j] = '_';
-                                    dog[i + 1, j] = '@';
-                                    xp = xp - 5;
+                                    dog[i + 1, j] = '@';                                    
                                 }
                                 //если конец столбца перекинуть на начало
                                 else
-                                {                                    
-                                    dog[0, j] = '@';
-                                    dog[i, j] = '_';
+                                {
                                     xp = xp - 5;
+                                    dog[0, j] = '@';
+                                    dog[i, j] = '_';                                    
                                 }
                                 keepLoop = false;
                             }
