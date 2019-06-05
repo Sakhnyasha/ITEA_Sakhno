@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,15 +21,15 @@ namespace Dog_Run_10_on_10
 
             int i;
             int j;
+            int size = 10; //РАЗМЕРНОСТЬ МАССИВА! потом сделать масштабируемым с возможностью ввода размера с клавы
 
             //начальное здоровье собачки
             int xp = 100;
-
-            //char[,] dog = new char [,] { { '@', '_', '_', '_', '_', '_', '_', '_', '_', '_' }, { '_', '_', '_', '_', '_', '_', '_', '_', '_', '_' }, { '_', '_', '_', '_', '_', '_', '_', '_', '_', '_' }, { '_', '_', '_', '_', '_', '_', '_', '_', '_', '_' }, { '_', '_', '_', '_', '_', '_', '_', '_', '_', '_' }, { '_', '_', '_', '_', '_', '_', '_', '_', '_', '_' }, { '_', '_', '_', '_', '_', '_', '_', '_', '_', '_' }, { '_', '_', '_', '_', '_', '_', '_', '_', '_', '_' }, { '_', '_', '_', '_', '_', '_', '_', '_', '_', '_' }, { '_', '_', '_', '_', '_', '_', '_', '_', '_', 'X' }};
-            //РАЗМЕРНОСТЬ МАССИВА! потом сделать масштабируемым с возможностью ввода размера с клавы
-            char[,] dog = new char[10,10];
+            
+            //создаем массив
+            char[,] dog = new char[size, size];
                        
-            //определение количества строк и столбцов если вбили вруную значения массива
+            //определение количества строк и столбцов (если вбили вруную значения массива)
             int rows = dog.GetUpperBound(0) + 1; //с помощью выражения mas.GetUpperBound(0) + 1 можно получить количество строк таблицы, представленной двухмерным массивом
             int columns = dog.Length / rows; //через mas.Length / rows можно получить количество элементов в каждой строке
 
@@ -44,7 +44,7 @@ namespace Dog_Run_10_on_10
                     dog[rows - 1, columns - 1] = 'X';
                 }
             }
-          
+            
             //выбор рандомных мест для бомбы и аптечки
             Random rnd = new Random();
             
@@ -84,17 +84,18 @@ namespace Dog_Run_10_on_10
                 //для считывания символов с клавыатуры
                 ConsoleKeyInfo key = Console.ReadKey(true);
 
-                //движение вправо на Д
-                //уменьшение здоровья
-                if (key.Key == ConsoleKey.D)
+                Boolean keepLoop = true; //чтобы наконец-то вышло из цикла!
+
+                xp = xp - 5;
+                for (i = 0; i < rows && keepLoop; i++)
                 {
-                    xp = xp - 5;
-                    Boolean keepLoop = true; //чтобы наконец-то вышло из цикла!
-                    for (i = 0; i < rows && keepLoop; i++)
+                    for (j = 0; j < columns && keepLoop; j++)
                     {
-                        for (j = 0; j < columns && keepLoop; j++)
+                        if (dog[i, j] == '@')
                         {
-                            if (dog[i, j] == '@')
+                            //движение вправо на Д
+                            //уменьшение здоровья
+                            if (key.Key == ConsoleKey.D)
                             {
                                 //если не конец строки
                                 if (j != columns - 1)
@@ -111,42 +112,31 @@ namespace Dog_Run_10_on_10
                                     dog[i, j + 1] = '@';
                                 }
                                 //если конец строки перекинуть на начало
-                                else 
+                                else
                                 {
-                                    dog[i,0] = '@';
+                                    dog[i, 0] = '@';
                                     dog[i, j] = '_';
                                 }
                                 keepLoop = false;
                             }
-                        }
-                    }
-                }
 
-                //движение влево на А
-                //уменьшение здоровья
-                else if (key.Key == ConsoleKey.A)
-                {
-                    xp = xp - 5;
-                    Boolean keepLoop = true; //чтобы наконец-то вышло из цикла!
-                    for (i = 0; i < rows && keepLoop; i++)
-                    {
-                        for (j = 0; j < columns && keepLoop; j++)
-                        {
-                            if (dog[i, j] == '@')
+                            //движение влево на А
+                            //уменьшение здоровья
+                            else if (key.Key == ConsoleKey.A)
                             {
                                 //если не начало строки
                                 if (j != 0)
                                 {
-                                    if (dog[i, j-1] == '*')
+                                    if (dog[i, j - 1] == '*')
                                         xp = xp - 40;
-                                    if (dog[i, j-1] == '+')
+                                    if (dog[i, j - 1] == '+')
                                     {
                                         xp = xp + 40;
                                         if (xp > 100)
                                             xp = 100;
                                     }
                                     dog[i, j] = '_';
-                                    dog[i, j-1] = '@';
+                                    dog[i, j - 1] = '@';
                                 }
                                 //если начало строки перекинуть на конец
                                 else
@@ -156,59 +146,37 @@ namespace Dog_Run_10_on_10
                                 }
                                 keepLoop = false;
                             }
-                        }
-                    }
-                }
 
-                //движение вверх на W
-                //уменьшение здоровья
-                else if (key.Key == ConsoleKey.W)
-                {
-                    xp = xp - 5;
-                    Boolean keepLoop = true; //чтобы наконец-то вышло из цикла!
-                    for (i = 0; i < rows && keepLoop; i++)
-                    {
-                        for (j = 0; j < columns && keepLoop; j++)
-                        {
-                            if (dog[i, j] == '@')
+                            //движение вверх на W
+                            //уменьшение здоровья
+                            else if (key.Key == ConsoleKey.W)
                             {
                                 //если не начало столбца
                                 if (i != 0)
                                 {
-                                    if (dog[i-1, j] == '*')
+                                    if (dog[i - 1, j] == '*')
                                         xp = xp - 40;
-                                    if (dog[i-1, j] == '+')
+                                    if (dog[i - 1, j] == '+')
                                     {
                                         xp = xp + 40;
                                         if (xp > 100)
                                             xp = 100;
                                     }
                                     dog[i, j] = '_';
-                                    dog[i-1, j] = '@';
+                                    dog[i - 1, j] = '@';
                                 }
                                 //если начало столбца перекинуть на конец
                                 else
                                 {
-                                    dog[rows-1, j] = '@';
+                                    dog[rows - 1, j] = '@';
                                     dog[i, j] = '_';
                                 }
                                 keepLoop = false;
                             }
-                        }
-                    }
-                }
 
-                //движение вниз на S
-                //уменьшение здоровья
-                else if (key.Key == ConsoleKey.S)
-                {
-                    xp = xp - 5;
-                    Boolean keepLoop = true; //чтобы наконец-то вышло из цикла!
-                    for (i = 0; i < rows && keepLoop; i++)
-                    {
-                        for (j = 0; j < columns && keepLoop; j++)
-                        {
-                            if (dog[i, j] == '@')
+                            //движение вниз на S
+                            //уменьшение здоровья
+                            else if (key.Key == ConsoleKey.S)
                             {
                                 //если не конец столбца
                                 if (i != rows - 1)
