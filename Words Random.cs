@@ -41,6 +41,7 @@ namespace Words_Random
                         if (char_letter == consonants[k])
                         {
                             counter_letter++;
+                            break;
                         }                            
                     }
                     result[i] = result[i] + char_letter.ToString();
