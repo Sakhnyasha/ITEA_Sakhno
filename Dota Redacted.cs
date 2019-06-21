@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,23 +8,29 @@ namespace Dota
 {
     class Hero
     {
-        public double health = 200;
+        private double health = 200;
+        protected String Name = "";
+
         //сумка игрока
         public Item[] bag = new Item[2];
-        virtual public string getName()
+
+        public string getName()
         {
-            return "";
+            return Name;
         }
+
+        public double getHealth()
+        {
+            return health;
+        }
+
         //return сумму значений характеристик айтемов сумки
         virtual public float getIntelligence()
         {
             float sum = 0;
             for (int i = 0; i < bag.Length; i++)
             {
-                if (bag[i] == null)
-                {
-                }
-                else
+                if (bag[i] != null)
                 {
                     sum = sum + bag[i].getIntelligence();
                 }
@@ -36,10 +42,7 @@ namespace Dota
             float sum = 0;
             for (int i = 0; i < bag.Length; i++)
             {
-                if (bag[i] == null)
-                {
-                }
-                else
+                if (bag[i] != null)
                 {
                     sum = sum + bag[i].getAgility();
                 }
@@ -51,10 +54,7 @@ namespace Dota
             float sum = 0;
             for (int i = 0; i < bag.Length; i++)
             {
-                if (bag[i] == null)
-                {
-                }
-                else
+                if (bag[i] != null)
                 {
                     sum = sum + bag[i].getStrength();
                 }
@@ -92,18 +92,15 @@ namespace Dota
             }
             return sb.ToString();
         }
-        //у всех нащадках тоже есть такая функция
+        //у всех наследниках тоже есть такая функция
         virtual public void Hit(Hero opponent)
         {
-        }
+        }    
     }
 
     class Pudge : Hero
     {
-        override public string getName()
-        {
-            return "Pudge         ";
-        }
+        protected String Name = "Pudge         ";
         override public float getIntelligence()
         {
             return 2 + base.getIntelligence();
@@ -122,16 +119,13 @@ namespace Dota
         }
         override public void Hit(Hero opponent)
         {
-            opponent.health = Math.Round((Convert.ToDouble(opponent.health - (getStrikePower() + getStrength() / 2 + getAgility() / 4 + getIntelligence() / 4))), 0);
+            opponent.getHealth() = Math.Round((Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 2 + getAgility() / 4 + getIntelligence() / 4))), 0);
         }
     }
 
     class MonkeyKing : Hero
     {
-        override public string getName()
-        {
-            return "Monkey King   ";
-        }
+        protected String Name = "Monkey King   ";
         override public float getIntelligence()
         {
             return 6 + base.getIntelligence();
@@ -150,16 +144,13 @@ namespace Dota
         }
         override public void Hit(Hero opponent)
         {
-            opponent.health = Math.Round((Convert.ToDouble(opponent.health - (getStrikePower() + getStrength() / 4 + getAgility() / 2 + getIntelligence() / 4))), 0);
+            opponent.getHealth() = Math.Round((Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 4 + getAgility() / 2 + getIntelligence() / 4))), 0);
         }
     }
 
     class DrowRanger : Hero
     {
-        override public string getName()
-        {
-            return "Drow Ranger   ";
-        }
+        protected String Name = "Drow Ranger   ";
         override public float getIntelligence()
         {
             return 6 + base.getIntelligence();
@@ -178,16 +169,13 @@ namespace Dota
         }
         override public void Hit(Hero opponent)
         {
-            opponent.health = Math.Round((Convert.ToDouble(opponent.health - (getStrikePower() + getStrength() / 4 + getAgility() / 2 + getIntelligence() / 4))), 0);
+            opponent.getHealth() = Math.Round((Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 4 + getAgility() / 2 + getIntelligence() / 4))), 0);
         }
     }
 
     class Warlock : Hero
     {
-        override public string getName()
-        {
-            return "Warlock       ";
-        }
+        protected String Name = "Warlock       ";
         override public float getIntelligence()
         {
             return 10 + base.getIntelligence();
@@ -206,16 +194,13 @@ namespace Dota
         }
         override public void Hit(Hero opponent)
         {
-            opponent.health = Math.Round((Convert.ToDouble(opponent.health - (getStrikePower() + getStrength() / 4 + getAgility() / 4 + getIntelligence() / 2))), 0);
+            opponent.getHealth() = Math.Round((Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 4 + getAgility() / 4 + getIntelligence() / 2))), 0);
         }
     }
 
     class CrystalMaiden : Hero
     {
-        override public string getName()
-        {
-            return "Crystal Maiden";
-        }
+        protected String Name = "Crystal Maiden";
         override public float getIntelligence()
         {
             return 10 + base.getIntelligence();
@@ -234,28 +219,32 @@ namespace Dota
         }
         override public void Hit(Hero opponent)
         {
-            opponent.health = Math.Round((Convert.ToDouble(opponent.health - (getStrikePower() + getStrength() / 4 + getAgility() / 4 + getIntelligence() / 2))), 0);
+            opponent.getHealth() = Math.Round((Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 4 + getAgility() / 4 + getIntelligence() / 2))), 0);
         }
     }
 
-
     class Item
     {
-        virtual public string getName()
+        protected string Name = "";
+        protected float Intelligence = 0;
+        protected float Agility = 0;
+        protected float Strength = 0;
+
+        public string getName()
         {
-            return "";
+            return Name;
         }
-        virtual public float getIntelligence()
+        public float getIntelligence()
         {
-            return 0;
+            return Intelligence;
         }
-        virtual public float getAgility()
+        public float getAgility()
         {
-            return 0;
+            return Agility;
         }
-        virtual public float getStrength()
+        public float getStrength()
         {
-            return 0;
+            return Strength;
         }
 
         public string getInfo()
@@ -274,62 +263,26 @@ namespace Dota
 
     class Bow : Item
     {
-        override public string getName()
-        {
-            return "Bow";
-        }
-        override public float getIntelligence()
-        {
-            return 3;
-        }
-        override public float getAgility()
-        {
-            return 8;
-        }
-        override public float getStrength()
-        {
-            return 7;
-        }
+        protected String Name = "Bow";
+        protected float Intelligence = 3;
+        protected float Agility = 8;
+        protected float Strength = 7;
     }
 
     class Truncheon : Item
     {
-        override public string getName()
-        {
-            return "Truncheon";
-        }
-        override public float getIntelligence()
-        {
-            return 2;
-        }
-        override public float getAgility()
-        {
-            return 2;
-        }
-        override public float getStrength()
-        {
-            return 9;
-        }
+        protected String Name = "Truncheon";
+        protected float Intelligence = 2;
+        protected float Agility = 2;
+        protected float Strength = 9;
     }
 
     class Wand : Item
     {
-        override public string getName()
-        {
-            return "Wand";
-        }
-        override public float getIntelligence()
-        {
-            return 10;
-        }
-        override public float getAgility()
-        {
-            return 5;
-        }
-        override public float getStrength()
-        {
-            return 7;
-        }
+        protected String Name = "Wand";
+        protected float Intelligence = 10;
+        protected float Agility = 5;
+        protected float Strength = 7;
     }
 
     class Program
@@ -413,7 +366,7 @@ namespace Dota
 
             //пошла игра
             int current_move = 0;
-            while (heroes[0].health > 0 && heroes[1].health > 0)
+            while (heroes[0].getHealth() > 0 && heroes[1].getHealth() > 0)
             {
                 //определение игрока и его противника
                 Hero player = heroes[current_move];
@@ -426,12 +379,12 @@ namespace Dota
 
                 //вывод лога и результата
                 Console.Clear();
-                if (heroes[0].health <= 0)
+                if (heroes[0].getHealth() <= 0)
                 {
                     Console.WriteLine("WINNER: " + heroes[1].getName());
                     break;
                 }
-                else if (heroes[1].health <= 0)
+                else if (heroes[1].getHealth() <= 0)
                 {
                     Console.WriteLine("WINNER: " + heroes[0].getName());
                     break;
