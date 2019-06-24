@@ -28,9 +28,9 @@ namespace Dota
             return health;
         }
 
-        public void setHealth(double newHealth)
+        public void setHealth(double health)
         {
-            this.health = newHealth;
+            this.health = health;
         }
 
         //return сумму значений характеристик айтемов сумки и персонажа
