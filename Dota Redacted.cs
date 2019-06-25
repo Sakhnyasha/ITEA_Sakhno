@@ -90,7 +90,7 @@ namespace Dota
         {
             return strikePower;
         }
-        public string getInfo()
+        public string heroInfo()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(getName() + "\tHealth: ");
@@ -273,7 +273,7 @@ namespace Dota
         {
             for (int i = 0; i < heroes.Length; i++)
             {
-                Console.WriteLine("Hero" + (i + 1) + "\n" + heroes[i].getInfo() + "\n");
+                Console.WriteLine("Hero" + (i + 1) + "\n" + heroes[i].heroInfo() + "\n");
             }
             Thread.Sleep(1000);
             Console.Clear();
