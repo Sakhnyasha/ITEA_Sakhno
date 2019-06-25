@@ -78,7 +78,7 @@ namespace Dota
         public string getInfo()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(getName() + "   Heath: ");
+            sb.Append(getName() + "\tHeath: ");
             sb.Append(getHealth());
             sb.Append("\nStrength: ");
             sb.Append(getStrength());
