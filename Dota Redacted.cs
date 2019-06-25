@@ -10,18 +10,18 @@ namespace Dota
     {
         private double health = 400;
 
-        protected String Name;
-        protected float Intelligence;
-        protected float Agility;
-        protected float Strength;
-        protected float StrikePower;
+        protected String name;
+        protected float intelligence;
+        protected float agility;
+        protected float strength;
+        protected float strikePower;
 
         //сумка игрока
         public Item[] bag = new Item[2];
 
         public string getName()
         {
-            return Name;
+            return name;
         }
 
         public double getHealth()
@@ -34,8 +34,12 @@ namespace Dota
             this.health = health;
         }
 
-        //return сумму значений характеристик айтемов сумки и персонажа
+        //return сумму значений характеристик айтемов сумки и персонажа для calculateInteSMTH
         public float getIntelligence()
+        {
+            return intelligence;
+        }
+        public float calculateIntelligence()
         {
             float sum = 0;
             for (int i = 0; i < bag.Length; i++)
@@ -45,9 +49,14 @@ namespace Dota
                     sum = sum + bag[i].getIntelligence();
                 }
             }
-            return sum + Intelligence;
+            return sum + intelligence;
         }
+
         public float getAgility()
+        {
+            return agility;
+        }
+        public float calculateAgility()
         {
             float sum = 0;
             for (int i = 0; i < bag.Length; i++)
@@ -57,9 +66,14 @@ namespace Dota
                     sum = sum + bag[i].getAgility();
                 }
             }
-            return sum + Agility;
+            return sum + agility;
         }
+
         public float getStrength()
+        {
+            return strength;
+        }
+        public float calculateStrength()
         {
             float sum = 0;
             for (int i = 0; i < bag.Length; i++)
@@ -69,23 +83,24 @@ namespace Dota
                     sum = sum + bag[i].getStrength();
                 }
             }
-            return sum + Strength;
+            return sum + strength;
         }
+
         public float getStrikePower()
         {
-            return StrikePower;
+            return strikePower;
         }
         public string getInfo()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(getName() + "\tHeath: ");
             sb.Append(getHealth());
-            sb.Append("\nStrength: ");
-            sb.Append(getStrength());
-            sb.Append(", Agility: ");
-            sb.Append(getAgility());
-            sb.Append(", Intelligence: ");
-            sb.Append(getIntelligence());
+            sb.Append("\nStrength: " + getStrength());
+            sb.Append("("+calculateStrength()+")");
+            sb.Append(", Agility: " + getAgility());
+            sb.Append("(" + calculateAgility() + ")");
+            sb.Append(", Intelligence: " + getIntelligence());
+            sb.Append("(" + calculateIntelligence() + ")");
             sb.Append(", StrikePower: ");
             sb.Append(getStrikePower());
             sb.Append("\nBag: \n");
@@ -110,75 +125,71 @@ namespace Dota
     {
         public Pudge()
         {
-            Name = "Pudge         ";
-            Intelligence = 2 ;
-            Agility = 4;
-            Strength = 10;
-            StrikePower = 10;
+            name = "Pudge         ";
+            intelligence = 2;
+            agility = 4;
+            strength = 10;
+            strikePower = 10;
         }
         override public void Hit(Hero opponent)
         {
             setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 2 + getAgility() / 4 + getIntelligence() / 4)), 0));
         }
     }
-
     class MonkeyKing : Hero
     {
         public MonkeyKing()
         {
-            Name = "Monkey King   ";
-            Intelligence = 6;
-            Agility = 10;
-            Strength = 5;
-            StrikePower = 6;
+            name = "Monkey King   ";
+            intelligence = 6;
+            agility = 10;
+            strength = 5;
+            strikePower = 6;
         }
         override public void Hit(Hero opponent)
         {
             setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 4 + getAgility() / 2 + getIntelligence() / 4)), 0));
         }
     }
-
     class DrowRanger : Hero
     {
         public DrowRanger()
         {
-            Name = "Drow Ranger   ";
-            Intelligence = 6;
-            Agility = 7;
-            Strength = 4;
-            StrikePower = 5;
+            name = "Drow Ranger   ";
+            intelligence = 6;
+            agility = 7;
+            strength = 4;
+            strikePower = 5;
         }
         override public void Hit(Hero opponent)
         {
             setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 4 + getAgility() / 2 + getIntelligence() / 4)), 0));
         }
     }
-
     class Warlock : Hero
     {
         public Warlock()
         {
-            Name = "Warlock       ";
-            Intelligence = 10;
-            Agility = 7;
-            Strength = 8;
-            StrikePower = 9;
+            name = "Warlock       ";
+            intelligence = 10;
+            agility = 7;
+            strength = 8;
+            strikePower = 9;
         }
         override public void Hit(Hero opponent)
         {
             setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 4 + getAgility() / 4 + getIntelligence() / 2)), 0));
         }
     }
-
     class CrystalMaiden : Hero
     {
         public CrystalMaiden()
         {
-            Name = "Crystal Maiden";
-            Intelligence = 10;
-            Agility = 8;
-            Strength = 9;
-            StrikePower = 9;
+            name = "Crystal Maiden";
+            intelligence = 10;
+            agility = 8;
+            strength = 9;
+            strikePower = 9;
         }
         override public void Hit(Hero opponent)
         {
@@ -188,26 +199,26 @@ namespace Dota
 
     class Item
     {
-        protected string Name;
-        protected float Intelligence;
-        protected float Agility;
-        protected float Strength;
+        protected string name;
+        protected float intelligence;
+        protected float agility;
+        protected float strength;
 
         public string getName()
         {
-            return Name;
+            return name;
         }
         public float getIntelligence()
         {
-            return Intelligence;
+            return intelligence;
         }
         public float getAgility()
         {
-            return Agility;
+            return agility;
         }
         public float getStrength()
         {
-            return Strength;
+            return strength;
         }
 
         public string getInfo()
@@ -228,32 +239,30 @@ namespace Dota
     {
         public Bow()
         {
-            Name = "Bow";
-            Intelligence = 3;
-            Agility = 8;
-            Strength = 7;
+            name = "Bow";
+            intelligence = 3;
+            agility = 8;
+            strength = 7;
         }
     }
-
     class Truncheon : Item
     {
         public Truncheon()
         {
-            Name = "Truncheon";
-            Intelligence = 2;
-            Agility = 2;
-            Strength = 9;
+            name = "Truncheon";
+            intelligence = 2;
+            agility = 2;
+            strength = 9;
         }
     }
-
     class Wand : Item
     {
         public Wand()
         {
-            Name = "Wand";
-            Intelligence = 10;
-            Agility = 5;
-            Strength = 7;
+            name = "Wand";
+            intelligence = 10;
+            agility = 5;
+            strength = 7;
         }
     }
 
