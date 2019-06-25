@@ -93,7 +93,7 @@ namespace Dota
         public string getInfo()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(getName() + "\tHeath: ");
+            sb.Append(getName() + "\tHealth: ");
             sb.Append(getHealth());
             sb.Append("\nStrength: " + getStrength());
             sb.Append("("+calculateStrength()+")");
@@ -133,7 +133,7 @@ namespace Dota
         }
         override public void Hit(Hero opponent)
         {
-            setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 2 + getAgility() / 4 + getIntelligence() / 4)), 0));
+            setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + calculateStrength() / 2 + calculateAgility() / 4 + calculateIntelligence() / 4)), 0));
         }
     }
     class MonkeyKing : Hero
@@ -148,7 +148,7 @@ namespace Dota
         }
         override public void Hit(Hero opponent)
         {
-            setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 4 + getAgility() / 2 + getIntelligence() / 4)), 0));
+            setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + calculateStrength() / 4 + calculateAgility() / 2 + calculateIntelligence() / 4)), 0));
         }
     }
     class DrowRanger : Hero
@@ -163,7 +163,7 @@ namespace Dota
         }
         override public void Hit(Hero opponent)
         {
-            setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 4 + getAgility() / 2 + getIntelligence() / 4)), 0));
+            setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + calculateStrength() / 4 + calculateAgility() / 2 + calculateIntelligence() / 4)), 0));
         }
     }
     class Warlock : Hero
@@ -178,7 +178,7 @@ namespace Dota
         }
         override public void Hit(Hero opponent)
         {
-            setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 4 + getAgility() / 4 + getIntelligence() / 2)), 0));
+            setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + calculateStrength() / 4 + calculateAgility() / 4 + calculateIntelligence() / 2)), 0));
         }
     }
     class CrystalMaiden : Hero
@@ -193,7 +193,7 @@ namespace Dota
         }
         override public void Hit(Hero opponent)
         {
-            setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + getStrength() / 4 + getAgility() / 4 + getIntelligence() / 2)), 0));
+            setHealth(Math.Round(Convert.ToDouble(opponent.getHealth() - (getStrikePower() + calculateStrength() / 4 + calculateAgility() / 4 + calculateIntelligence() / 2)), 0));
         }
     }
 
