@@ -6,9 +6,10 @@ using System.Threading;
 
 namespace Dota
 {
-    class Hero
+    abstract class Hero
     {
         private double health = 400;
+
         protected String Name;
         protected float Intelligence;
         protected float Agility;
@@ -72,7 +73,7 @@ namespace Dota
         }
         public float getStrikePower()
         {
-            return 0 + StrikePower;
+            return StrikePower;
         }
         public string getInfo()
         {
@@ -102,9 +103,7 @@ namespace Dota
             return sb.ToString();
         }
         //у всех наследниках тоже есть такая функция
-        virtual public void Hit(Hero opponent)
-        {
-        }
+        abstract public void Hit(Hero opponent);
     }
 
     class Pudge : Hero
@@ -260,6 +259,17 @@ namespace Dota
 
     class Program
     {
+        //вывод инфо
+        private static void PrintHerosStatus(Hero[] heroes)
+        {
+            for (int i = 0; i < heroes.Length; i++)
+            {
+                Console.WriteLine("Hero" + (i + 1) + "\n" + heroes[i].getInfo() + "\n");
+            }
+            Thread.Sleep(1000);
+            Console.Clear();
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("█▀▀▀▄░░█▀▀▀▀█░▀▀▀█▀▀▀▒█▀▀▀▀█▒▒█ █" +
@@ -283,24 +293,19 @@ namespace Dota
                 switch (hero_imdex)
                 {
                     case 0:
-                        Pudge pudge = new Pudge();
-                        heroes[i] = pudge;
+                        heroes[i] = new Pudge();
                         break;
                     case 1:
-                        MonkeyKing monkeyKing = new MonkeyKing();
-                        heroes[i] = monkeyKing;
+                        heroes[i] = new MonkeyKing();
                         break;
                     case 2:
-                        DrowRanger drowRanger = new DrowRanger();
-                        heroes[i] = drowRanger;
+                        heroes[i] = new DrowRanger();
                         break;
                     case 3:
-                        Warlock warlock = new Warlock();
-                        heroes[i] = warlock;
+                        heroes[i] = new Warlock();
                         break;
                     case 4:
-                        CrystalMaiden crystalMaiden = new CrystalMaiden();
-                        heroes[i] = crystalMaiden;
+                        heroes[i] = new CrystalMaiden();
                         break;
                 }
 
@@ -311,16 +316,13 @@ namespace Dota
                     switch (item_index)
                     {
                         case 0:
-                            Bow bow = new Bow();
-                            heroes[i].bag[j] = bow;
+                            heroes[i].bag[j] = new Bow();
                             break;
                         case 1:
-                            Truncheon truncheon = new Truncheon();
-                            heroes[i].bag[j] = truncheon;
+                            heroes[i].bag[j] = new Truncheon();
                             break;
                         case 2:
-                            Wand wand = new Wand();
-                            heroes[i].bag[j] = wand;
+                            heroes[i].bag[j] = new Wand();
                             break;
                         case 3:
                             heroes[i].bag[j] = null;
@@ -330,16 +332,11 @@ namespace Dota
             }
 
             //вывод изначальных параметров игроков
-            for (int i = 0; i < 2; i++)
-            {
-                Console.WriteLine("Hero" + (i + 1) + "\n" + heroes[i].getInfo() + "\n");
-            }
-            Thread.Sleep(1000);
-            Console.WriteLine("=======================");
+            PrintHerosStatus(heroes);
 
             //пошла игра
             int current_move = 0;
-            while (heroes[0].getHealth() > 0 && heroes[1].getHealth() > 0)
+            do
             {
                 //определение игрока и его противника
                 Hero player = heroes[current_move];
@@ -350,32 +347,25 @@ namespace Dota
                 //смена хода
                 current_move = (current_move == 0) ? 1 : 0;
 
-                //вывод лога и результата
-                Console.Clear();
+                //если здоровье <0, то здоровье=0
                 if (heroes[0].getHealth() <= 0)
                 {
-                    Console.WriteLine("WINNER: " + heroes[1].getName());
-                    break;
+                    heroes[0].setHealth(0);
                 }
                 else if (heroes[1].getHealth() <= 0)
                 {
-                    Console.WriteLine("WINNER: " + heroes[0].getName());
-                    break;
+                    heroes[1].setHealth(0);
                 }
-                else
-                {
-                    //вывод инфо о состоянии героев
-                    for (int i = 0; i < 2; i++)
-                    {
-                        Console.WriteLine("Hero" + (i + 1) + "\n" + heroes[i].getInfo() + "\n");
-                    }
-                    Thread.Sleep(1000);
-                    Console.WriteLine("=======================");
-                }
+                //вывод инфо о состоянии героев
+                PrintHerosStatus(heroes);
             }
+            while (heroes[0].getHealth() > 0 && heroes[1].getHealth() > 0);
+            Console.Clear();
 
-            Console.WriteLine("\n===========================");
-            Console.WriteLine("Press any key to quit!");
+            //вывод результата
+            Hero winner = heroes[0].getHealth() == 0 ? heroes[1] : heroes[0];
+            Console.WriteLine("WINNER: " + winner.getName() + "\n===========================" + "\nPress any key to quit!");
+
             //чтобы консоль не закрывалась
             //очистка буфера ввода
             while (Console.KeyAvailable)
