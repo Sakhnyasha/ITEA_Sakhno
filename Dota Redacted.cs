@@ -348,11 +348,11 @@ namespace Dota
                 current_move = (current_move == 0) ? 1 : 0;
 
                 //если здоровье <0, то здоровье=0
-                if (heroes[0].getHealth() <= 0)
+                if (heroes[0].getHealth() < 0)
                 {
                     heroes[0].setHealth(0);
                 }
-                else if (heroes[1].getHealth() <= 0)
+                else if (heroes[1].getHealth() < 0)
                 {
                     heroes[1].setHealth(0);
                 }
