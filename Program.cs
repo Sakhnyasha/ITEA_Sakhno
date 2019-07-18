@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +16,7 @@ namespace Cart
 	{
 		public Product[] products = new Product[5];
 
-        //для определения последнего элимента корзины
+        	//для определения последнего элимента корзины
 		int currentElement = -1;
 		public Product getLastProduct()
 		{
@@ -29,7 +29,7 @@ namespace Cart
 				return products[currentElement];
 			}
 		}
-        //добавление следующего элемента в корзину
+        	//добавление следующего элемента в корзину
 		public void putProduct(Product product)
 		{
 			if (currentElement+1 >= products.Length)
@@ -42,7 +42,7 @@ namespace Cart
 				products[currentElement] = product;
 			}
 		}
-        //удаление последнего элемента из корзины
+        	//удаление последнего элемента из корзины
 		public void delProduct()
 		{
 			if (currentElement < 0)
@@ -55,35 +55,35 @@ namespace Cart
 				currentElement--;
 			}
 		}
-        //вывод состояния корзины
+        	//вывод состояния корзины
 		public void printInfo()
 		{
 			StringBuilder sb = new StringBuilder("Status:\n");
 
-            if (currentElement < 0)
-            {
-                Console.WriteLine("Your cart is EMPTY!\n");
-            }
-            else if(currentElement > products.Length)
-            {
-                Console.WriteLine("Your cart is FULL!\n");
-            }
+            		if (currentElement < 0)
+            		{
+                		Console.WriteLine("Your cart is EMPTY!\n");
+            		}
+			    else if(currentElement > products.Length)
+			    {
+				Console.WriteLine("Your cart is FULL!\n");
+			    }
 
-            else
-            {
-                for (int i = 0; i <= currentElement; i++)
-                {
-                    Product product = products[i];
-                    sb.Append("Name: ");
-                    sb.Append(product.getName());
-                    sb.Append(", price: ");
-                    sb.Append(product.getPrice());
-                    sb.Append("\n");
-                }
-                Console.WriteLine(sb.ToString());
-            }
+			    else
+			    {
+				for (int i = 0; i <= currentElement; i++)
+				{
+				    Product product = products[i];
+				    sb.Append("Name: ");
+				    sb.Append(product.getName());
+				    sb.Append(", price: ");
+				    sb.Append(product.getPrice());
+				    sb.Append("\n");
+				}
+				Console.WriteLine(sb.ToString());
+			    }
+			}
 		}
-	}
 	interface ICart
 	{
 		void printInfo();
@@ -140,54 +140,54 @@ namespace Cart
 
 			Console.WriteLine("======Stack Cart======\n");
 
-            //add 5 products. get cart info
-            cart.putProduct(apple);
+            		//add 5 products. get cart info
+            		cart.putProduct(apple);
 			cart.putProduct(cookies);
 			cart.putProduct(chocolate);
 			cart.putProduct(cookies);
 			cart.putProduct(apple);
-            cart.printInfo();
+            		cart.printInfo();
 
-            //add 6-th product. get error. get cart info
-            cart.putProduct(chocolate);
-            cart.printInfo();
+		    	//add 6-th product. get error. get cart info
+		    	cart.putProduct(chocolate);
+		    	cart.printInfo();
 
-            //для особо настырных. добавим еще раз
-            cart.putProduct(chocolate);
-            cart.printInfo();
+		    	//для особо настырных. добавим еще раз
+		    	cart.putProduct(chocolate);
+		    	cart.printInfo();
 
-            //dell 5-th product. get cart info
-            cart.getLastProduct();
-            cart.delProduct();
-            cart.printInfo();
+		    	//dell 5-th product. get cart info
+		    	cart.getLastProduct();
+		    	cart.delProduct();
+		    	cart.printInfo();
 
-            //dell 4-th product. get cart info
-            cart.getLastProduct();
-            cart.delProduct();
-            cart.printInfo();
+		    	//dell 4-th product. get cart info
+		    	cart.getLastProduct();
+		    	cart.delProduct();
+		    	cart.printInfo();
 
-            //dell 3-rd product. get cart info
-            cart.getLastProduct();
-            cart.delProduct();
-            cart.printInfo();
+		    	//dell 3-rd product. get cart info
+		    	cart.getLastProduct();
+		    	cart.delProduct();
+		    	cart.printInfo();
 
-            //dell 2-nd product. get cart info
-            cart.getLastProduct();
-            cart.delProduct();
-            cart.printInfo();
+		    	//dell 2-nd product. get cart info
+		    	cart.getLastProduct();
+		    	cart.delProduct();
+		    	cart.printInfo();
 
-            //dell 1-st product. get error. get cart info
-            cart.getLastProduct();
-            cart.delProduct();
-            cart.printInfo();
+		    	//dell 1-st product. get error. get cart info
+		    	cart.getLastProduct();
+		    	cart.delProduct();
+		    	cart.printInfo();
 
-            //для особо настырных. удалим еще раз
-            cart.getLastProduct();
-            cart.delProduct();
-            cart.printInfo();
+		    	//для особо настырных. удалим еще раз
+		    	cart.getLastProduct();
+		    	cart.delProduct();
+		    	cart.printInfo();
 
-            //чтобы консолька не закрылась
-            Console.ReadKey();
+		    	//чтобы консолька не закрылась
+		    	Console.ReadKey();
 		}
 	}
 }
