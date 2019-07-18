@@ -64,13 +64,13 @@ namespace Cart
             		{
                 		Console.WriteLine("Your cart is EMPTY!\n");
             		}
-			    else if(currentElement > products.Length)
-			    {
+			else if(currentElement > products.Length)
+			{
 				Console.WriteLine("Your cart is FULL!\n");
-			    }
+			}
 
-			    else
-			    {
+			else
+			{
 				for (int i = 0; i <= currentElement; i++)
 				{
 				    Product product = products[i];
