@@ -83,7 +83,7 @@ namespace Dota
 		protected float strength;
 		protected float strikePowerBase; //единственное, что меняется у копий
 
-        //для проверки на оригинал и копию
+        //для проверки на оригинал и копию по свойствами предмета
 		protected bool isClone;
 
 		//сумка игрока
@@ -97,7 +97,7 @@ namespace Dota
 		{
 		}
 
-        //для доступа к сумке героя
+        //чтобы можно было бы установить сумку герою или его копии
 		protected Hero(Item[] bag)
 		{
 			this.bag = bag;
