@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Collection
 {
-    class MyCollection<T> : IList
+    class MyCollection<T> : IList<T>
     {
         private T[] _arr;
         private int _lenght;
@@ -24,81 +24,82 @@ namespace Collection
         public int Count => _lenght;
 
         //добавление с авторасширением
-        public int Add(object value)
+        public void Add(T value)
         {
             if (_lenght == Сapacity)
             {
                 Сapacity *= 2;
-                T[] temp = new T[Сapacity];
+                var temp = new T[Сapacity];
                 Array.Copy(_arr, temp, _arr.Length);
                 _arr = temp;
             }
 
             _arr[_lenght] = (T)value;
             _lenght++;
-            return _lenght - 1;
         }
 
         //удаление по ссылке на элимент
         public void RemoveAt(int index)
         {
-            if (index >= 0 || index < _lenght)
+            if (index < 0 && index >= _lenght) return;
+            for (var i = index + 1; i < _lenght; i++)
             {
-                for (int i = index + 1; i < _lenght; i++)
-                {
-                    _arr[i - 1] = _arr[i];
-                }
-                _lenght--;
+                _arr[i - 1] = _arr[i];
             }
+
+            _lenght--;
         }
 
         //для возможности передобра foreach, например
-        public IEnumerator GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < _lenght; i++)
+            for (var i = 0; i < _lenght; i++)
             {
                 yield return _arr[i];
             }
         }
 
-        public object this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public object SyncRoot => throw new NotImplementedException();
-
-        public bool IsSynchronized => throw new NotImplementedException();
+        public T this[int index]
+        {
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
+        }
 
         public bool IsReadOnly => throw new NotImplementedException();
-
-        public bool IsFixedSize => throw new NotImplementedException();
 
         public void Clear()
         {
             throw new NotImplementedException();
         }
 
-        public bool Contains(object value)
+        public bool Contains(T value)
         {
             throw new NotImplementedException();
         }
 
-        public void CopyTo(Array array, int index)
+        public void CopyTo(T[] array, int index)
         {
             throw new NotImplementedException();
         }
 
-        public int IndexOf(object value)
+        public int IndexOf(T value)
         {
             throw new NotImplementedException();
         }
 
-        public void Insert(int index, object value)
+        public void Insert(int index, T value)
         {
             throw new NotImplementedException();
         }
 
-        public void Remove(object value)
+        public bool Remove(T value)
         {
             throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 
