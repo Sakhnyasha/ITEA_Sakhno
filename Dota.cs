@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-// ReSharper disable CommentTypo
-
-namespace ConsoleApplication1
+namespace Dota
 {
     //Задание: https://github.com/Sakhnyasha/ITEA_Sakhno/blob/Sakhnyasha-2HW2/photo5312134269340068679.jpg + 
     //+пусть будет ваша коллекция параметризируемая, куда можно будет добавлять айтемы. делать все операции с айтемами
