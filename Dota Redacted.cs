@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -386,6 +386,10 @@ namespace Dota
     {
         private int _isSelfClone;
 
+        public PhantomLancer() : this(new MyCollection<Item>(2))
+        {
+        }
+
         //чтобы копии так же имели доступ к сумке
         public PhantomLancer(ICollection<Item> bag) : base(bag)
         {
@@ -475,6 +479,10 @@ namespace Dota
 
     class AntiMage : Hero
     {
+        public AntiMage() : this(new MyCollection<Item>(2))
+        {
+        }
+
         //основной конструктор класса
         //чтобы копии так же имели доступ к сумке
         public AntiMage(ICollection<Item> bag) : base(bag)
