@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System.Data.Common;
@@ -63,7 +63,7 @@ namespace DataBase
         }
 
         public User()
-        {            
+        {
         }
 
         public override string ToString()
@@ -77,17 +77,17 @@ namespace DataBase
         MySqlConnection conn;
         public UserController(MySqlConnection conn)
         {
-            this.conn = conn;       
+            this.conn = conn;
         }
 
         public User getUserById(int id)
         {
             User user = new User();
             conn.Open();
-            string query = "SELECT * FROM users WHERE id=" + id;
+            string query = "SELECT * FROM users WHERE id = @id";
             MySqlCommand command = new MySqlCommand(query, conn);
-            //command.Connection = conn;
-            //command.CommandText = query;
+            command.Parameters.Add(new MySqlParameter("@id", id));
+            command.Prepare();
 
             using (DbDataReader reader = command.ExecuteReader())
             {
@@ -101,26 +101,19 @@ namespace DataBase
                     int addressO = reader.GetOrdinal("address");
                     int ageO = reader.GetOrdinal("age");
 
-                    int userId = Convert.ToInt32(reader.GetValue(idO));
-                    string name = reader.GetString(nameO);
-                    string login = reader.GetString(loginO);
-                    string password = reader.GetString(passwordO);
-                    string address = reader.GetString(addressO);
-                    int age = Convert.ToInt32(reader.GetValue(ageO));
-
-                    user.id = userId;
-                    user.name = name;
-                    user.login = login;
-                    user.password = password;
-                    user.address = address;
-                    user.age = age;
+                    user.id = reader.GetInt32(idO);
+                    user.name = reader.GetString(nameO);
+                    user.login = reader.GetString(loginO);
+                    user.password = reader.GetString(passwordO);
+                    user.address = reader.GetString(addressO);
+                    user.age = reader.GetInt32(ageO);
                 }
             }
             conn.Close();
             return user;
         }
 
-        public List<User> GetAllUser()
+        public List<User> GetAllUsers()
         {
             conn.Open();
 
@@ -141,20 +134,13 @@ namespace DataBase
                         int addressO = reader.GetOrdinal("address");
                         int ageO = reader.GetOrdinal("age");
 
-                        int userId = Convert.ToInt32(reader.GetValue(idO));
-                        string name = reader.GetString(nameO);
-                        string login = reader.GetString(loginO);
-                        string password = reader.GetString(passwordO);
-                        string address = reader.GetString(addressO);
-                        int age = Convert.ToInt32(reader.GetValue(ageO));
-
                         User user = new User();
-                        user.id = userId;
-                        user.name = name;
-                        user.login = login;
-                        user.password = password;
-                        user.address = address;
-                        user.age = age;
+                        user.id = reader.GetInt32(idO);
+                        user.name = reader.GetString(nameO);
+                        user.login = reader.GetString(loginO);
+                        user.password = reader.GetString(passwordO);
+                        user.address = reader.GetString(addressO);
+                        user.age = reader.GetInt32(ageO);
 
                         userCol.Add(user);
                     }
@@ -179,35 +165,7 @@ namespace DataBase
 
             command.Prepare();
             command.ExecuteNonQuery();
-            //
-            using (DbDataReader reader = command.ExecuteReader())
-            {
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    int idO = reader.GetOrdinal("id");
-                    int nameO = reader.GetOrdinal("name");
-                    int loginO = reader.GetOrdinal("login");
-                    int passwordO = reader.GetOrdinal("password");
-                    int addressO = reader.GetOrdinal("address");
-                    int ageO = reader.GetOrdinal("age");
 
-                    int userId = Convert.ToInt32(reader.GetValue(idO));
-                    string name = reader.GetString(nameO);
-                    string login = reader.GetString(loginO);
-                    string password = reader.GetString(passwordO);
-                    string address = reader.GetString(addressO);
-                    int age = Convert.ToInt32(reader.GetValue(ageO));
-
-                    user.id = userId;
-                    user.name = name;
-                    user.login = login;
-                    user.password = password;
-                    user.address = address;
-                    user.age = age;
-                }
-            }
-            //
             conn.Close();
         }
 
@@ -223,74 +181,19 @@ namespace DataBase
             command.Parameters.Add(new MySqlParameter("@address", user.address));
             command.Parameters.Add(new MySqlParameter("@age", user.age));
             command.Parameters.Add(new MySqlParameter("@id", user.id));
-
+            command.Prepare();
             command.ExecuteNonQuery();
-            //
-            using (DbDataReader reader = command.ExecuteReader())
-            {
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    int idO = reader.GetOrdinal("id");
-                    int nameO = reader.GetOrdinal("name");
-                    int loginO = reader.GetOrdinal("login");
-                    int passwordO = reader.GetOrdinal("password");
-                    int addressO = reader.GetOrdinal("address");
-                    int ageO = reader.GetOrdinal("age");
-
-                    int userId = Convert.ToInt32(reader.GetValue(idO));
-                    string name = reader.GetString(nameO);
-                    string login = reader.GetString(loginO);
-                    string password = reader.GetString(passwordO);
-                    string address = reader.GetString(addressO);
-                    int age = Convert.ToInt32(reader.GetValue(ageO));
-
-                    user.id = userId;
-                    user.name = name;
-                    user.login = login;
-                    user.password = password;
-                    user.address = address;
-                    user.age = age;
-                }
-            }
-            //
             conn.Close();
         }
 
         public void dellUserById(int id)
         {
-            User user = new User();
             conn.Open();
-            string query = "DELETE FROM users WHERE id=" + id;
+            string query = "DELETE FROM users WHERE id = @id";
             MySqlCommand command = new MySqlCommand(query, conn);
-
-            using (DbDataReader reader = command.ExecuteReader())
-            {
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    int idO = reader.GetOrdinal("id");
-                    int nameO = reader.GetOrdinal("name");
-                    int loginO = reader.GetOrdinal("login");
-                    int passwordO = reader.GetOrdinal("password");
-                    int addressO = reader.GetOrdinal("address");
-                    int ageO = reader.GetOrdinal("age");
-
-                    int userId = Convert.ToInt32(reader.GetValue(idO));
-                    string name = reader.GetString(nameO);
-                    string login = reader.GetString(loginO);
-                    string password = reader.GetString(passwordO);
-                    string address = reader.GetString(addressO);
-                    int age = Convert.ToInt32(reader.GetValue(ageO));
-
-                    user.id = userId;
-                    user.name = name;
-                    user.login = login;
-                    user.password = password;
-                    user.address = address;
-                    user.age = age;
-                }
-            }
+            command.Parameters.Add(new MySqlParameter("@id", id));
+            command.Prepare();
+            command.ExecuteNonQuery();
             conn.Close();
         }
 
@@ -300,47 +203,45 @@ namespace DataBase
     {
         static void Main(string[] args)
         {
-            //get bu ID
-            UserController controller = new UserController(DBWorker.getMysqlConnection());
-            User user = controller.getUserById(2);
-            Console.WriteLine(user);
-
+            UserController userController = new UserController(DBWorker.getMysqlConnection());
+            //get by ID
+            Console.WriteLine("Get by ID");
+            Console.WriteLine(userController.getUserById(2));
             Console.WriteLine("============================");
 
             ////add users in List and show all
-            UserController listUSers = new UserController(DBWorker.getMysqlConnection());
-            List<User> list = listUSers.GetAllUser();
-            foreach (User u in list)
-            {
-                Console.WriteLine(u);
-            }
+            Console.WriteLine("Show All Users");
+            printUsers(userController.GetAllUsers());
             Console.WriteLine("============================");
 
             //adding new user
-            listUSers.addUser(new User("Sveta", "babydoll", "sveta94", "Obolon", 26));
-            foreach (User u in list)
-            {
-                Console.WriteLine(u);
-            }
+            Console.WriteLine("Adding New User");
+            userController.addUser(new User("Sveta", "babydoll", "sveta94", "Obolon", 26));
+            printUsers(userController.GetAllUsers());
             Console.WriteLine("============================");
 
-            //updaiting user
-            listUSers.updateUser(new User(6, "Vika", "vikusya", "victory000", "Nyvky", 40));
-            foreach (User u in list)
-            {
-                Console.WriteLine(u);
-            }
+            //updating user
+            Console.WriteLine("Updating User");
+            userController.updateUser(new User(6, "Vika", "vikusya", "victory000", "Nyvky", 40));
+            printUsers(userController.GetAllUsers());
             Console.WriteLine("============================");
 
             //deleting by id
-            listUSers.dellUserById(7);
-            foreach (User u in list)
-            {
-                Console.WriteLine(u);
-            }
+            Console.WriteLine("Deleting by ID");
+            userController.dellUserById(7);
+            printUsers(userController.GetAllUsers());
             Console.WriteLine("============================");
 
             Console.ReadKey();
         }
+
+        private static void printUsers(IEnumerable<User> users)
+        {
+            foreach (var u in users)
+            {
+                Console.WriteLine(u);
+            }
+        }
+
     }
 }
