@@ -1,0 +1,12 @@
+CREATE DATABASE test;
+USE test;
+
+CREATE TABLE users (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(15), login VARCHAR(30), password VARCHAR(30), address VARCHAR(30), age INT);
+INSERT INTO users (name, login, password, address, age) VALUES("Ann", "anya_student", "anya123", "Kyiv", 25);
+INSERT INTO users (name, login, password, address, age) VALUES("Valera", "valera_student", "valera123", "Irpen", 30);
+INSERT INTO users (name, login, password, address, age) VALUES("Masha", "masha_student", "masha123", "Bucha", 19);
+
+CREATE TABLE orders (id INT PRIMARY KEY AUTO_INCREMENT, num_of_ord INT, user_id INT, FOREIGN KEY(user_id) REFERENCES users(id));
+INSERT INTO orders (num_of_ord,user_id) VALUES(1,1);
+INSERT INTO orders (num_of_ord,user_id) VALUES(1,2);
+INSERT INTO orders (num_of_ord,user_id) VALUES(1,3);
