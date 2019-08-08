@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
+//Задание: https://github.com/Sakhnyasha/ITEA_Sakhno/blob/Sakhnyasha-2HW6(7)/photo5357514902379539257.jpg
+
 namespace GoldMine
 {
     class GoldMine
