@@ -1,0 +1,78 @@
+﻿@page
+@using Microsoft.AspNetCore.Http
+@model Final_Project.Pages.AuthorizationModel
+
+<h2>Authorization</h2>
+
+@{
+    ViewData["Title"] = "Authorization";
+
+    if (HttpContext.Request.Method == "POST")
+    {
+        string login = Request.Form["login"];
+        string password = Request.Form["password"];
+        Checker checker = new Checker();
+        string str = checker.getAut(login, password);
+        string color;
+        if (str.Equals("Access"))
+        {
+            color = "green";
+            HttpContext.Session.SetString("User", login);
+            Response.Redirect("/UserUpdate");
+        }
+        else
+        {
+            color = "red";
+        }
+        <h2 style="color: @color">@str</h2>
+    }
+
+}
+
+<style type="text/css">
+    TABLE {
+        background: white;
+        border: 5px;
+        margin: auto;
+        width: 200px;
+    }
+
+    TH {
+        padding: 1px;
+        font-family: Gabriola;
+        font-size: 30px;
+        border: 0px;
+    }
+
+    TD {
+        padding: 1px;
+        font-family: Gabriola;
+        font-size: 28px;
+        border: 0px;
+        width: 100px;
+    }
+</style>
+
+<p>
+    <table>
+        <tr>
+            <th colspan="2" align="center">Введите данные учетной записи: </th>
+        </tr>
+        <form action="" method="post">
+            <tr>
+                <td><lable> Логин: </lable></td>
+                <td><input type="email" name="login" /></td>
+            </tr>
+            <tr>
+                <td><lable> Пароль: </lable></td>
+                <td><input type="password" name="password" /></td>
+            </tr>
+            <tr><td></td><td></td></tr>
+            <tr>
+                <td></td>
+                <td align="left"><input type="submit" value="Войти" /></td>
+            </tr>
+        </form>
+    </table>
+</p>
+

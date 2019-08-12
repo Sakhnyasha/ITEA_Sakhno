@@ -1,0 +1,9 @@
+CREATE DATABASE final;
+USE final;
+
+CREATE TABLE users (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(15) NOT NULL, login VARCHAR(30) NOT NULL UNIQUE, password VARCHAR(30) NOT NULL, address VARCHAR(30) NOT NULL, age INT NOT NULL, sex VARCHAR(15) NOT NULL);
+
+INSERT INTO users (name, login, password, address, age, sex) VALUES("Ann", "ann@mail.ru", "ann123", "Kyiv", 25, "Female");
+INSERT INTO users (name, login, password, address, age, sex) VALUES("Hary", "hary@mail.ru", "hary123", "Space", 45, "Male");
+
+SELECT * FROM users;

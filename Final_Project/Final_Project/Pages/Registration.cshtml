@@ -1,0 +1,126 @@
+﻿@page
+@model Final_Project.Pages.RegistrationModel
+<h2>Registration</h2>
+
+@{
+    ViewData["Title"] = "Registration";
+
+    if (HttpContext.Request.Method == "POST")
+    {
+        string name = Request.Form["name"];
+        string login = Request.Form["login"];
+        string password = Request.Form["password"];
+        string rePassword = Request.Form["rePassword"];
+        string address = Request.Form["address"];
+        int age = Int32.Parse(Request.Form["age"]);
+        string sex = Request.Form["sex"];
+
+        Checker checker = new Checker();
+        string str = checker.addAcc(login, name, password, rePassword, address, age, sex);
+        string color = str.Equals("Access") ? "green" : "red";
+        <h2 style="color: @color">@str</h2>
+    }
+
+
+}
+
+<script>
+            // Function to check Whether both passwords
+            // is same or not.
+            function checkPassword(form) {
+                password = form.password.value;
+                rePassword = form.rePassword.value;
+
+                // If password not entered
+                if (password == '')
+                    alert ("Please enter Password");
+
+                // If confirm password not entered
+                else if (rePassword == '')
+                    alert ("Please enter confirm password");
+
+                // If Not same return False.
+                else if (password != rePassword) {
+                    alert ("\nPassword did not match: Please try again...")
+                    return false;
+                }
+
+                // If same return True.
+                else{
+                    alert("Password Match!")
+                    return true;
+                }
+            }
+</script>
+
+<style type="text/css">
+    TABLE {
+        background: white;
+        border: 5px;
+        margin: auto;
+        width: 500px;
+    }
+
+    TH {
+        padding: 1px;
+        font-family: Gabriola;
+        font-size: 35px;
+        border: 0px;
+    }
+
+    TD {
+        padding: 2px;
+        font-family: Gabriola;
+        font-size: 22px;
+        border: 0px;
+        width: 150px;
+    }
+</style>
+
+<p>
+    <table>
+        <tr>
+            <th align="center" colspan="2">Регистрация пользователя: </th></tr>
+        <tr>
+            <td>
+                <form action="" method="post" onSubmit = "return checkPassword(this)">
+                    <table>
+                        <tr align=left>
+                            <td><lable>Имя: </lable> </td>
+                            <td><input type="text" name="name" autofocus required /></td>
+                        </tr>
+                        <tr align=left>
+                            <td><lable>Логин (E-mail): </lable> </td>
+                            <td><input type="email" name="login" autofocus required /></td>
+                        </tr>
+                        <tr align=left>
+                            <td><lable>Пароль: </lable> </td>
+                            <td><input type="password" name="password" value="" size="8" maxlength="12" autofocus required /></td>
+                        </tr>
+                        <tr align=left>
+                            <td><lable>Повторите Пароль: </lable> </td>
+                            <td><input type="password" name="rePassword" value="" size="8" maxlength="12" autofocus required /></td>
+                        </tr>
+                        <tr align=left>
+                            <td><lable>Адресс: </lable> </td>
+                            <td><input type="text" name="address" autofocus required /></td>
+                        </tr>
+                        <tr align=left>
+                            <td><lable>Возраст: </lable> </td>
+                            <td><input type="number" name="age" min="0" max="200" autofocus required /></td>
+                        </tr>
+                        <tr align=left>
+                            <td> <input type="radio" name="sex" value="Male" checked /><lable> Male </lable></td>
+                            <td> <input type="radio" name="sex" value="Female" /><lable>Female</lable></td>
+                        </tr>
+                        <tr><td><lable>   </lable></td><td><lable>   </lable></td></tr>
+                        <tr>
+                            <td align="left"><input type="submit" value="Отправить" /></td>
+                            <td align="left"><input type="reset" value="Отменить" /></td>
+                        </tr>
+                    </table>
+                </form>
+            </td>
+        </tr>
+    </table>
+</p>
