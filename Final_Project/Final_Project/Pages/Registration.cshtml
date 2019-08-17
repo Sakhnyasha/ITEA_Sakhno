@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model Final_Project.Pages.RegistrationModel
 <h2>Registration</h2>
 
@@ -18,7 +18,7 @@
         Checker checker = new Checker();
         string str = checker.addAcc(login, name, password, rePassword, address, age, sex);
         string color = str.Equals("Access") ? "green" : "red";
-        <h2 style="color: @color">@str</h2>
+        <h4 style="color: @color">@Html.Raw(str)</h4>
     }
 
 
@@ -75,6 +75,16 @@
         border: 0px;
         width: 150px;
     }
+
+    .field {
+        font-size: 20px;
+        width: 150px;
+    }
+
+    .mask {
+        font-size: 16px;
+        color: gray;
+    }
 </style>
 
 <p>
@@ -86,34 +96,64 @@
                 <form action="" method="post" onSubmit = "return checkPassword(this)">
                     <table>
                         <tr align=left>
-                            <td><lable>Имя: </lable> </td>
-                            <td><input type="text" name="name" autofocus required /></td>
+                            <td><lable>Имя *: </lable> </td>
+                            <td class="field"><input type="text" name="name" maxlength ="15" autofocus required /></td>
                         </tr>
                         <tr align=left>
-                            <td><lable>Логин (E-mail): </lable> </td>
-                            <td><input type="email" name="login" autofocus required /></td>
+                            <td></td>
+                            <td class="mask"><lable>Например: Anna или Ann Sakhno</lable> </td>
                         </tr>
                         <tr align=left>
-                            <td><lable>Пароль: </lable> </td>
-                            <td><input type="password" name="password" value="" size="8" maxlength="12" autofocus required /></td>
+                            <td><lable>Логин (E-mail) *: </lable> </td>
+                            <td class="field"><input type="email" name="login" maxlength ="30" autofocus required /></td>
                         </tr>
                         <tr align=left>
-                            <td><lable>Повторите Пароль: </lable> </td>
-                            <td><input type="password" name="rePassword" value="" size="8" maxlength="12" autofocus required /></td>
+                            <td></td>
+                            <td class="mask"><lable>Например: ann_sakhno@mail.ru</lable> </td>
                         </tr>
                         <tr align=left>
-                            <td><lable>Адресс: </lable> </td>
-                            <td><input type="text" name="address" autofocus required /></td>
+                            <td><lable>Пароль *: </lable> </td>
+                            <td class="field"><input type="password" name="password" value="" size="8" maxlength="12" autofocus required /></td>
                         </tr>
                         <tr align=left>
-                            <td><lable>Возраст: </lable> </td>
-                            <td><input type="number" name="age" min="0" max="200" autofocus required /></td>
+                            <td></td>
+                            <td class="mask"><lable>Длина пароля от 8 до 12 символов!</lable> </td>
+                        </tr>
+                        <tr align=left>
+                            <td><lable>Повторите Пароль *: </lable> </td>
+                            <td class="field"><input type="password" name="rePassword" value="" size="8" maxlength="12" autofocus required /></td>
+                        </tr>
+                        <tr align=left>
+                            <td></td>
+                            <td class="mask"><lable>Длина пароля от 8 до 12 символов!</lable> </td>
+                        </tr>
+                        <tr align=left>
+                            <td><lable>Адресс *: </lable> </td>
+                            <td class="field"><input type="text" name="address" maxlength ="30" autofocus required /></td>
+                        </tr>
+                        <tr align=left>
+                            <td></td>
+                            <td class="mask"><lable>Например: Kyiv</lable> </td>
+                        </tr>
+                        <tr align=left>
+                            <td><lable>Возраст *: </lable> </td>
+                            <td class="field"><input type="number" name="age" min="0" max="200" autofocus required /></td>
+                        </tr>
+                        <tr align=left>
+                            <td></td>
+                            <td class="mask"><lable>Возраст от 0 до 200 лет!</lable> </td>
+                        </tr>
+                        <tr align=left>
+                            <td ><lable>Выбирете пол *:</lable> </td>
+                            <td></td>
                         </tr>
                         <tr align=left>
                             <td> <input type="radio" name="sex" value="Male" checked /><lable> Male </lable></td>
-                            <td> <input type="radio" name="sex" value="Female" /><lable>Female</lable></td>
+                            <td class="field"> <input type="radio" name="sex" value="Female" /><lable>Female</lable></td>
                         </tr>
-                        <tr><td><lable>   </lable></td><td><lable>   </lable></td></tr>
+                        <tr>
+                            <td class="mask" colspan="2"><lable>* - поля обязательные для заполнения!</lable></td>
+                        </tr>
                         <tr>
                             <td align="left"><input type="submit" value="Отправить" /></td>
                             <td align="left"><input type="reset" value="Отменить" /></td>
